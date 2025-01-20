@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+    <!-- 背景 -->
+    <rect width="800" height="600" fill="#f5f5f5"/>
+    
+    <!-- 基盤機能 -->
+    <rect x="150" y="460" width="500" height="60" rx="4" fill="#E0E0E0"/>
+    <text x="400" y="495" text-anchor="middle" fill="#424242" font-size="14">スコープ制御 / エラーハンドリング（基盤機能）</text>
+    
+    <!-- メインコントローラー -->
+    <rect x="320" y="50" width="160" height="60" rx="4" fill="#2E7D32"/>
+    <text x="400" y="85" text-anchor="middle" fill="white" font-size="16">コントローラー</text>
+    
+    <!-- 主要機能グループ -->
+    <!-- ルーティング -->
+    <rect x="100" y="180" width="160" height="60" rx="4" fill="#1976D2"/>
+    <text x="180" y="215" text-anchor="middle" fill="white" font-size="14">ルーティング</text>
+    
+    <rect x="50" y="300" width="80" height="40" rx="4" fill="#64B5F6"/>
+    <text x="90" y="325" text-anchor="middle" fill="#212121" font-size="12">ワイルドカード</text>
+    
+    <rect x="140" y="300" width="80" height="40" rx="4" fill="#64B5F6"/>
+    <text x="180" y="325" text-anchor="middle" fill="#212121" font-size="12">サブドメイン</text>
+    
+    <rect x="230" y="300" width="80" height="40" rx="4" fill="#64B5F6"/>
+    <text x="270" y="325" text-anchor="middle" fill="#212121" font-size="12">パラメータ</text>
+    
+    <!-- リクエスト処理 -->
+    <rect x="320" y="180" width="160" height="60" rx="4" fill="#FFA000"/>
+    <text x="400" y="215" text-anchor="middle" fill="white" font-size="14">リクエスト処理</text>
+    
+    <rect x="320" y="300" width="80" height="40" rx="4" fill="#FFD54F"/>
+    <text x="360" y="325" text-anchor="middle" fill="#212121" font-size="12">ペイロード</text>
+    
+    <rect x="410" y="300" width="80" height="40" rx="4" fill="#FFD54F"/>
+    <text x="450" y="325" text-anchor="middle" fill="#212121" font-size="12">非同期処理</text>
+    
+    <!-- レスポンス制御 -->
+    <rect x="540" y="180" width="160" height="60" rx="4" fill="#D32F2F"/>
+    <text x="620" y="215" text-anchor="middle" fill="white" font-size="14">レスポンス制御</text>
+    
+    <rect x="500" y="300" width="80" height="40" rx="4" fill="#EF9A9A"/>
+    <text x="540" y="325" text-anchor="middle" fill="#212121" font-size="12">ステータス</text>
+    
+    <rect x="590" y="300" width="80" height="40" rx="4" fill="#EF9A9A"/>
+    <text x="630" y="325" text-anchor="middle" fill="#212121" font-size="12">ヘッダー</text>
+    
+    <rect x="680" y="300" width="80" height="40" rx="4" fill="#EF9A9A"/>
+    <text x="720" y="325" text-anchor="middle" fill="#212121" font-size="12">リダイレクト</text>
+    
+    <!-- 接続線 -->
+    <!-- メインから主要機能へ -->
+    <line x1="400" y1="110" x2="180" y2="180" stroke="#757575" stroke-width="1"/>
+    <line x1="400" y1="110" x2="400" y2="180" stroke="#757575" stroke-width="1"/>
+    <line x1="400" y1="110" x2="620" y2="180" stroke="#757575" stroke-width="1"/>
+    
+    <!-- 主要機能からサブ機能へ -->
+    <line x1="180" y1="240" x2="90" y2="300" stroke="#757575" stroke-width="1"/>
+    <line x1="180" y1="240" x2="180" y2="300" stroke="#757575" stroke-width="1"/>
+    <line x1="180" y1="240" x2="270" y2="300" stroke="#757575" stroke-width="1"/>
+    
+    <line x1="400" y1="240" x2="360" y2="300" stroke="#757575" stroke-width="1"/>
+    <line x1="400" y1="240" x2="450" y2="300" stroke="#757575" stroke-width="1"/>
+    
+    <line x1="620" y1="240" x2="540" y2="300" stroke="#757575" stroke-width="1"/>
+    <line x1="620" y1="240" x2="630" y2="300" stroke="#757575" stroke-width="1"/>
+    <line x1="620" y1="240" x2="720" y2="300" stroke="#757575" stroke-width="1"/>
+</svg>
