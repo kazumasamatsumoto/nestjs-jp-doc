@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 800">
+    <!-- Background -->
+    <rect width="900" height="800" fill="#f8fafc"/>
+    
+    <!-- Title -->
+    <text x="450" y="50" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="24" fill="#1e293b">NestJS Setup and Project Creation Flow</text>
+    
+    <!-- Prerequisites Section -->
+    <g transform="translate(50, 100)">
+        <rect width="800" height="120" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+        <text x="400" y="40" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="18" fill="#4338ca">Prerequisites</text>
+        
+        <!-- Prerequisites Items -->
+        <g transform="translate(50, 70)">
+            <text x="0" y="0" font-family="Arial" font-size="14" fill="#4338ca">• Node.js (>= v20)</text>
+            <text x="200" y="0" font-family="Arial" font-size="14" fill="#4338ca">• npm (package manager)</text>
+            <text x="400" y="0" font-family="Arial" font-size="14" fill="#4338ca">• Terminal/Command Prompt</text>
+        </g>
+    </g>
+    
+    <!-- Installation Steps -->
+    <g transform="translate(50, 250)">
+        <rect width="800" height="200" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+        <text x="400" y="40" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="18" fill="#b45309">Installation Steps</text>
+        
+        <!-- Steps -->
+        <g transform="translate(50, 70)">
+            <text x="0" y="0" font-family="Arial" font-size="14" fill="#b45309">1. Install NestJS CLI globally:</text>
+            <rect x="20" y="10" width="300" height="30" rx="5" fill="#fff" stroke="#b45309"/>
+            <text x="35" y="30" font-family="monospace" font-size="14" fill="#b45309">$ npm i -g @nestjs/cli</text>
+            
+            <text x="0" y="60" font-family="Arial" font-size="14" fill="#b45309">2. Create new project:</text>
+            <rect x="20" y="70" width="300" height="30" rx="5" fill="#fff" stroke="#b45309"/>
+            <text x="35" y="90" font-family="monospace" font-size="14" fill="#b45309">$ nest new project-name</text>
+        </g>
+    </g>
+    
+    <!-- Project Structure -->
+    <g transform="translate(50, 480)">
+        <rect width="800" height="280" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+        <text x="400" y="40" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="18" fill="#047857">Generated Project Structure</text>
+        
+        <!-- Directory Structure -->
+        <g transform="translate(50, 70)">
+            <text x="0" y="0" font-family="monospace" font-size="14" fill="#047857">project-name/</text>
+            <text x="20" y="25" font-family="monospace" font-size="14" fill="#047857">├── src/</text>
+            <text x="40" y="50" font-family="monospace" font-size="14" fill="#047857">├── app.controller.ts</text>
+            <text x="40" y="75" font-family="monospace" font-size="14" fill="#047857">├── app.controller.spec.ts</text>
+            <text x="40" y="100" font-family="monospace" font-size="14" fill="#047857">├── app.module.ts</text>
+            <text x="40" y="125" font-family="monospace" font-size="14" fill="#047857">├── app.service.ts</text>
+            <text x="40" y="150" font-family="monospace" font-size="14" fill="#047857">└── main.ts</text>
+            <text x="20" y="175" font-family="monospace" font-size="14" fill="#047857">├── package.json</text>
+            <text x="20" y="200" font-family="monospace" font-size="14" fill="#047857">└── nest-cli.json</text>
+        </g>
+        
+        <!-- File Descriptions -->
+        <g transform="translate(400, 70)">
+            <text x="0" y="50" font-family="Arial" font-size="14" fill="#047857">→ Basic controller with route</text>
+            <text x="0" y="75" font-family="Arial" font-size="14" fill="#047857">→ Unit tests for controller</text>
+            <text x="0" y="100" font-family="Arial" font-size="14" fill="#047857">→ Root module of the application</text>
+            <text x="0" y="125" font-family="Arial" font-size="14" fill="#047857">→ Basic service with business logic</text>
+            <text x="0" y="150" font-family="Arial" font-size="14" fill="#047857">→ Application entry point</text>
+        </g>
+    </g>
+    
+    <!-- Flow Arrows -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8"/>
+        </marker>
+    </defs>
+    
+    <path d="M450 220 L450 250" fill="none" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M450 450 L450 480" fill="none" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrowhead)"/>
+</svg>

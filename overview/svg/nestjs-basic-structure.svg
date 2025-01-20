@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700">
+    <!-- Background -->
+    <rect width="900" height="700" fill="#f8fafc"/>
+    
+    <!-- Title -->
+    <text x="450" y="50" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="24" fill="#1e293b">NestJS Basic Architecture</text>
+    
+    <!-- Client Request -->
+    <rect x="50" y="100" width="120" height="60" rx="10" fill="#f0f9ff" stroke="#0ea5e9" stroke-width="2"/>
+    <text x="110" y="135" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="14" fill="#0369a1">Client Request</text>
+    
+    <!-- Main Module Container -->
+    <rect x="250" y="80" width="600" height="600" rx="15" fill="#fef2f2" stroke="#e0234e" stroke-width="2"/>
+    <text x="550" y="110" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="18" fill="#dc2626">AppModule</text>
+    
+    <!-- Controller -->
+    <rect x="300" y="150" width="500" height="150" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="550" y="180" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="16" fill="#4338ca">Controller</text>
+    <text x="320" y="210" font-family="Arial" font-size="14" fill="#4338ca">@Controller('users')</text>
+    <text x="320" y="240" font-family="Arial" font-size="14" fill="#4338ca">- @Get() findAll()</text>
+    <text x="320" y="260" font-family="Arial" font-size="14" fill="#4338ca">- @Post() create()</text>
+    <text x="320" y="280" font-family="Arial" font-size="14" fill="#4338ca">- @Put(':id') update()</text>
+    
+    <!-- Service -->
+    <rect x="300" y="350" width="500" height="150" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+    <text x="550" y="380" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="16" fill="#b45309">Service</text>
+    <text x="320" y="410" font-family="Arial" font-size="14" fill="#b45309">@Injectable()</text>
+    <text x="320" y="440" font-family="Arial" font-size="14" fill="#b45309">- findAll(): User[]</text>
+    <text x="320" y="460" font-family="Arial" font-size="14" fill="#b45309">- create(user: User): User</text>
+    <text x="320" y="480" font-family="Arial" font-size="14" fill="#b45309">- update(id: number, user: User): User</text>
+    
+    <!-- Database -->
+    <rect x="300" y="550" width="500" height="60" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="550" y="585" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="16" fill="#047857">Database / Repository</text>
+    
+    <!-- Arrows -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8"/>
+        </marker>
+    </defs>
+    
+    <!-- Request Flow Arrows -->
+    <path d="M170 130 L300 130" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M550 300 L550 350" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M550 500 L550 550" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+    <!-- Dependency Injection Labels -->
+    <text x="570" y="325" font-family="Arial" font-style="italic" font-size="12" fill="#64748b">Dependency Injection</text>
+    <text x="570" y="525" font-family="Arial" font-style="italic" font-size="12" fill="#64748b">Data Access</text>
+</svg>
