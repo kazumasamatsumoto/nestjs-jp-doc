@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900">
+    <!-- 背景 -->
+    <rect width="800" height="900" fill="#f5f5f5"/>
+    
+    <!-- タイトル -->
+    <rect x="50" y="20" width="700" height="50" rx="4" fill="#2E7D32"/>
+    <text x="400" y="50" text-anchor="middle" fill="white" font-size="20">テストパターンとベストプラクティス</text>
+    
+    <!-- ユニットテスト -->
+    <rect x="60" y="90" width="680" height="240" rx="4" fill="#4CAF50"/>
+    <text x="400" y="115" text-anchor="middle" fill="white" font-size="16">ユニットテストパターン</text>
+    
+    <rect x="70" y="130" width="320" height="190" rx="2" fill="white"/>
+    <text x="80" y="150" fill="#212121" font-size="14">目的：個別メソッドの機能検証</text>
+    <text x="80" y="175" fill="#212121" font-size="12">実装例:</text>
+    <text x="90" y="195" fill="#212121" font-size="11" font-family="monospace">describe('CatsController', () => {</text>
+    <text x="90" y="215" fill="#212121" font-size="11" font-family="monospace">  let controller: CatsController;</text>
+    <text x="90" y="235" fill="#212121" font-size="11" font-family="monospace">  let service: CatsService;</text>
+    <text x="90" y="255" fill="#212121" font-size="11" font-family="monospace">  beforeEach(async () => {</text>
+    <text x="90" y="275" fill="#212121" font-size="11" font-family="monospace">    // テストモジュールのセットアップ</text>
+    <text x="90" y="295" fill="#212121" font-size="11" font-family="monospace">  });</text>
+    
+    <rect x="410" y="130" width="320" height="190" rx="2" fill="white"/>
+    <text x="420" y="150" fill="#212121" font-size="12">責務：</text>
+    <text x="430" y="170" fill="#212121" font-size="11">・メソッドの単体テスト</text>
+    <text x="430" y="190" fill="#212121" font-size="11">・依存性のモック化</text>
+    <text x="430" y="210" fill="#212121" font-size="11">・エッジケースの検証</text>
+    <text x="430" y="230" fill="#212121" font-size="11">・例外ケースのテスト</text>
+    <text x="430" y="250" fill="#212121" font-size="11">・入力バリデーションの確認</text>
+    
+    <!-- E2Eテスト -->
+    <rect x="60" y="350" width="680" height="240" rx="4" fill="#00796B"/>
+    <text x="400" y="375" text-anchor="middle" fill="white" font-size="16">E2Eテストパターン</text>
+    
+    <rect x="70" y="390" width="320" height="190" rx="2" fill="white"/>
+    <text x="80" y="410" fill="#212121" font-size="14">目的：エンドポイントの総合検証</text>
+    <text x="80" y="435" fill="#212121" font-size="12">実装例:</text>
+    <text x="90" y="455" fill="#212121" font-size="11" font-family="monospace">describe('Cats', () => {</text>
+    <text x="90" y="475" fill="#212121" font-size="11" font-family="monospace">  let app: INestApplication;</text>
+    <text x="90" y="495" fill="#212121" font-size="11" font-family="monospace">  beforeAll(async () => {</text>
+    <text x="90" y="515" fill="#212121" font-size="11" font-family="monospace">    const moduleRef = await Test.create...</text>
+    <text x="90" y="535" fill="#212121" font-size="11" font-family="monospace">  });</text>
+    
+    <rect x="410" y="390" width="320" height="190" rx="2" fill="white"/>
+    <text x="420" y="410" fill="#212121" font-size="12">責務：</text>
+    <text x="430" y="430" fill="#212121" font-size="11">・HTTPリクエストの検証</text>
+    <text x="430" y="450" fill="#212121" font-size="11">・レスポンスの検証</text>
+    <text x="430" y="470" fill="#212121" font-size="11">・統合シナリオのテスト</text>
+    <text x="430" y="490" fill="#212121" font-size="11">・ミドルウェアの動作確認</text>
+    <text x="430" y="510" fill="#212121" font-size="11">・エラーレスポンスの確認</text>
+    
+    <!-- ベストプラクティス -->
+    <rect x="60" y="610" width="680" height="270" rx="4" fill="#1565C0"/>
+    <text x="400" y="635" text-anchor="middle" fill="white" font-size="16">実装ベストプラクティス</text>
+    
+    <rect x="70" y="650" width="320" height="220" rx="2" fill="white"/>
+    <text x="80" y="670" fill="#212121" font-size="14">設計原則</text>
+    <text x="90" y="695" fill="#212121" font-size="12">1. 単一責任の原則を守る</text>
+    <text x="90" y="715" fill="#212121" font-size="12">2. ビジネスロジックは分離する</text>
+    <text x="90" y="735" fill="#212121" font-size="12">3. 依存性注入を活用する</text>
+    <text x="90" y="755" fill="#212121" font-size="12">4. DTOを適切に使用する</text>
+    <text x="90" y="775" fill="#212121" font-size="12">5. エラーハンドリングを統一する</text>
+    <text x="90" y="795" fill="#212121" font-size="12">6. バリデーションを徹底する</text>
+    <text x="90" y="815" fill="#212121" font-size="12">7. ドキュメンテーションを整備</text>
+    
+    <rect x="410" y="650" width="320" height="220" rx="2" fill="white"/>
+    <text x="420" y="670" fill="#212121" font-size="14">アンチパターン回避</text>
+    <text x="430" y="695" fill="#212121" font-size="12">・ビジネスロジックの混在</text>
+    <text x="430" y="715" fill="#212121" font-size="12">・過度な責任の集中</text>
+    <text x="430" y="735" fill="#212121" font-size="12">・不適切なエラー処理</text>
+    <text x="430" y="755" fill="#212121" font-size="12">・非同期処理の誤った実装</text>
+    <text x="430" y="775" fill="#212121" font-size="12">・テスト可能性の欠如</text>
+    <text x="430" y="795" fill="#212121" font-size="12">・過剰な依存関係</text>
+    <text x="430" y="815" fill="#212121" font-size="12">・不適切なルート設計</text>
+</svg>

@@ -393,3 +393,11 @@ findAll(@Res({ passthrough: true }) res: Response) {
 ```
 
 これで、ネイティブのレスポンスオブジェクトと対話できる（例：特定の条件に応じてクッキーやヘッダーを設定する）一方で、残りの処理はフレームワークに任せることができます。
+
+# 画像置き場
+
+![NestJSコントローラーの追加概念図](/overview/svg/controller-additional-concepts.svg)
+![NestJSコントローラーの応用パターン](/overview/svg/controller-advanced-patterns.svg)
+![NestJSコントローラー詳細図](/overview/svg/controller-detailed-diagrams.svg)
+![NestJSコントローラー基盤機能の詳細図](/overview/svg/controller-foundation-details.svg)
+![NestJSコントローラーのテストパターンとベストプラクティス](/overview/svg/controller-testing-practices.svg)
