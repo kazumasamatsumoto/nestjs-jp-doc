@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900">
+    <!-- Background -->
+    <rect width="800" height="900" fill="#f8fafc"/>
+    
+    <!-- Title -->
+    <text x="400" y="60" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="28" fill="#1e293b">NestJS Architecture</text>
+    
+    <!-- Main NestJS Container -->
+    <rect x="50" y="100" width="700" height="750" rx="15" fill="#fef2f2" stroke="#e0234e" stroke-width="2"/>
+    
+    <!-- Layers -->
+    <!-- TypeScript/JavaScript Layer -->
+    <rect x="100" y="150" width="600" height="120" rx="10" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="400" y="215" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="18" fill="#4338ca">TypeScript / JavaScript Layer</text>
+    
+    <!-- NestJS Core Layer -->
+    <rect x="100" y="400" width="600" height="120" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+    <text x="400" y="465" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="18" fill="#b45309">NestJS Core (OOP + FP + FRP)</text>
+    
+    <!-- HTTP Server Frameworks -->
+    <rect x="100" y="650" width="280" height="100" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="240" y="705" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="18" fill="#047857">Express</text>
+    
+    <rect x="420" y="650" width="280" height="100" rx="10" fill="#f0f9ff" stroke="#0ea5e9" stroke-width="2"/>
+    <text x="560" y="705" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="18" fill="#0369a1">Fastify</text>
+    
+    <!-- Connecting Lines with longer arrows -->
+    <!-- Main vertical arrow from TypeScript to NestJS Core -->
+    <path d="M400 270 L400 400" fill="none" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrowhead)"/>
+    
+    <!-- Arrows from NestJS Core to HTTP servers -->
+    <path d="M240 520 L240 650" fill="none" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M560 520 L560 650" fill="none" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrowhead)"/>
+    
+    <!-- Legend -->
+    <rect x="100" y="800" width="600" height="50" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="400" y="830" text-anchor="middle" font-family="Arial" font-size="14" fill="#64748b">HTTP Server Framework Options</text>
+    
+    <!-- Arrow marker definition -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8"/>
+        </marker>
+    </defs>
+</svg>
