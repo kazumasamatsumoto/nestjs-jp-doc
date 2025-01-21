@@ -189,3 +189,76 @@ Express はエコシステムが充実し安定性が高く一般的な Web ア�
 これらの歴史的背景が、両フレームワークの設計思想や特徴の違いとなって現れています。
 
 ![歴史的背景](/overview/svg/framework-history-timeline-final.svg)
+
+# この章のサンプル
+
+[first-step](https://github.com/kazumasamatsumoto/nest-first-step)
+
+## トレーニング
+
+まず、基本的にソースコードとテストコードを同時に修正していく癖をつけることで以下のようにします。
+
+最初のところでは Hello World!とビックリマークを一つになっていますが、
+
+好きなだけ数を増やして、テストコード側でも同じ数ビックリマークを増やしていきます。
+
+src/app.service.ts
+
+```ts
+import { Injectable } from "@nestjs/common";
+
+@Injectable()
+export class AppService {
+  getHello(): string {
+    return "Hello World!!!!!!";
+  }
+}
+```
+
+src/app.controller.spec.ts
+
+```ts
+import { Test, TestingModule } from "@nestjs/testing";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
+
+describe("AppController", () => {
+  let appController: AppController;
+
+  beforeEach(async () => {
+    const app: TestingModule = await Test.createTestingModule({
+      controllers: [AppController],
+      providers: [AppService],
+    }).compile();
+
+    appController = app.get<AppController>(AppController);
+  });
+
+  describe("root", () => {
+    it('should return "Hello World!"', () => {
+      expect(appController.getHello()).toBe("Hello World!!!!!!");
+    });
+  });
+});
+```
+
+## 動作確認
+
+```bash
+npm run start
+```
+
+これでブラウザにアクセスすると、Hello World!!!!!と表示されるはずです。
+
+```bash
+npm run start:dev
+```
+
+これでファイルの変更を監視して、自動的にサーバーを再コンパイルして再起動します。
+
+このファイルの変更を監視する機能を身に付けるためにビックリマークの数を減らしてブラウザ（ローカルホスト 3000 番）で確認して反映されているか確認してみてください。
+
+- [ ] npm run start を実行した後でビックリマークの数を増やして動作確認をする
+- [ ] npm run start:dev を実行した後でビックリマークの数を減らして動作確認をする
+
+上記二つを確認することで nest のローカル開発での確認の基本が身に付きます。
