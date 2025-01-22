@@ -580,6 +580,64 @@ async getDashboardData(): Promise<DashboardData> {
 
 ## リクエストペイロード
 
+### リクエストの構造とペイロード
+
+HTTP リクエストの構造を図で表すと以下のようになります：
+
+```
+┌──────────────── HTTPリクエスト ────────────────┐
+│                                                │
+│ ┌────────── リクエストライン ──────────┐        │
+│ │ POST /api/cats HTTP/1.1             │        │
+│ └─────────────────────────────────────┘        │
+│                                                │
+│ ┌────────── ヘッダー ──────────────────┐       │
+│ │ Host: example.com                    │       │
+│ │ Content-Type: application/json       │       │
+│ │ Authorization: Bearer xxx...         │       │
+│ └─────────────────────────────────────┘        │
+│                                                │
+│ ┌────────── ペイロード ─────────────────┐      │
+│ │ {                                     │      │
+│ │   "name": "タマ",                     │      │
+│ │   "age": 3,                           │      │
+│ │   "breed": "雑種"                     │      │
+│ │ }                                     │      │
+│ └─────────────────────────────────────┘        │
+│                                                │
+└────────────────────────────────────────────────┘
+```
+
+### リクエストの各部分の説明
+
+1. **リクエストライン**
+
+   - HTTP メソッド（GET, POST, PUT, DELETE 等）
+   - リクエストパス（/api/cats）
+   - HTTP バージョン
+
+2. **ヘッダー**
+
+   - リクエストに関する付加情報
+   - Content-Type, Authorization 等の情報を含む
+
+3. **ペイロード**（リクエストボディ）
+   - リクエストの本体部分
+   - POST や PUT リクエストで送信したいデータを含む
+   - 上記の例では、新しく作成する猫の情報が JSON 形式で含まれている
+
+このペイロード部分が、先ほど説明した DTO クラスにマッピングされます：
+
+```typescript
+export class CreateCatDto {
+  name: string; // "タマ"がマッピング
+  age: number; // 3がマッピング
+  breed: string; // "雑種"がマッピング
+}
+```
+
+### リクエストペイロードのマッピング
+
 これまでの POST ルートハンドラーの例では、クライアントのパラメータを受け取っていませんでした。ここで`@Body()`デコレータを追加して、この問題を解決しましょう。
 
 ただし最初に（TypeScript を使用している場合）、DTO（Data Transfer Object）スキーマを定義する必要があります。DTO は、データがネットワーク上でどのように送信されるかを定義するオブジェクトです。DTO スキーマは TypeScript インターフェースか、単純なクラスを使用して定義できます。興味深いことに、ここではクラスの使用を推奨します。なぜでしょうか？
@@ -722,11 +780,3 @@ findAll(@Res({ passthrough: true }) res: Response) {
 ```
 
 これで、ネイティブのレスポンスオブジェクトと対話できる（例：特定の条件に応じてクッキーやヘッダーを設定する）一方で、残りの処理はフレームワークに任せることができます。
-
-# 画像置き場
-
-![NestJSコントローラーの追加概念図](/overview/svg/controller-additional-concepts.svg)
-![NestJSコントローラーの応用パターン](/overview/svg/controller-advanced-patterns.svg)
-![NestJSコントローラー詳細図](/overview/svg/controller-detailed-diagrams.svg)
-![NestJSコントローラー基盤機能の詳細図](/overview/svg/controller-foundation-details.svg)
-![NestJSコントローラーのテストパターンとベストプラクティス](/overview/svg/controller-testing-practices.svg)
