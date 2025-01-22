@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景 -->
+    <rect width="100%" height="100%" fill="#f8f9fa"/>
+    
+    <!-- タイトル -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-weight="bold">
+        レスポンス処理の2つのアプローチ
+    </text>
+
+    <!-- 標準アプローチ -->
+    <g transform="translate(50,80)">
+        <rect width="300" height="320" rx="10" fill="#e6ffe6" stroke="#98fb98"/>
+        <text x="150" y="30" text-anchor="middle" font-size="16" font-weight="bold">標準アプローチ（推奨）</text>
+        
+        <!-- コード例 -->
+        <g transform="translate(20,50)">
+            <rect width="260" height="120" rx="5" fill="#fff" stroke="#98fb98"/>
+            <text x="10" y="25" font-family="monospace" font-size="14">@Get()</text>
+            <text x="10" y="50" font-family="monospace" font-size="14">findAll() {</text>
+            <text x="10" y="75" font-family="monospace" font-size="14">  return ["cat1", "cat2"];</text>
+            <text x="10" y="100" font-family="monospace" font-size="14">}</text>
+        </g>
+
+        <!-- 特徴リスト -->
+        <g transform="translate(20,190)">
+            <text x="0" y="0" font-size="14" fill="#666">特徴:</text>
+            <text x="0" y="25" font-size="14" fill="#666">• 値を直接return</text>
+            <text x="0" y="50" font-size="14" fill="#666">• 自動的にJSONにシリアライズ</text>
+            <text x="0" y="75" font-size="14" fill="#666">• ステータスコードは自動設定</text>
+            <text x="0" y="100" font-size="14" fill="#666">• シンプルで直感的</text>
+        </g>
+    </g>
+
+    <!-- ライブラリ固有アプローチ -->
+    <g transform="translate(450,80)">
+        <rect width="300" height="320" rx="10" fill="#ffe4e1" stroke="#ffb6c1"/>
+        <text x="150" y="30" text-anchor="middle" font-size="16" font-weight="bold">ライブラリ固有アプローチ</text>
+        
+        <!-- コード例 -->
+        <g transform="translate(20,50)">
+            <rect width="260" height="120" rx="5" fill="#fff" stroke="#ffb6c1"/>
+            <text x="10" y="25" font-family="monospace" font-size="14">@Get()</text>
+            <text x="10" y="50" font-family="monospace" font-size="14">findAll(@Res() res) {</text>
+            <text x="10" y="75" font-family="monospace" font-size="14">  res.status(200)</text>
+            <text x="10" y="100" font-family="monospace" font-size="14">     .json(["cat1", "cat2"]);</text>
+        </g>
+
+        <!-- 特徴リスト -->
+        <g transform="translate(20,190)">
+            <text x="0" y="0" font-size="14" fill="#666">特徴:</text>
+            <text x="0" y="25" font-size="14" fill="#666">• レスポンスオブジェクトを操作</text>
+            <text x="0" y="50" font-size="14" fill="#666">• 完全な制御が可能</text>
+            <text x="0" y="75" font-size="14" fill="#666">• Express/Fastify固有の機能</text>
+            <text x="0" y="100" font-size="14" fill="#666">• より詳細な制御が必要な場合に使用</text>
+        </g>
+    </g>
+
+    <!-- 注意事項 -->
+    <g transform="translate(50,420)">
+        <rect width="700" height="60" rx="5" fill="#fff4e6" stroke="#ffd8a8"/>
+        <text x="350" y="25" text-anchor="middle" font-size="14" fill="#fd7e14">注意: ライブラリ固有アプローチを使用すると、NestJSの標準機能（Interceptorsなど）が</text>
+        <text x="350" y="45" text-anchor="middle" font-size="14" fill="#fd7e14">正しく動作しなくなる可能性があります。</text>
+    </g>
+</svg> 

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景 -->
+    <rect width="100%" height="100%" fill="#f8f9fa"/>
+    
+    <!-- タイトル -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-weight="bold">
+        コントローラーのルーティング処理フロー
+    </text>
+
+    <!-- クライアント -->
+    <g transform="translate(50,150)">
+        <rect width="200" height="100" rx="10" fill="#ff9999" stroke="#ff6666"/>
+        <text x="100" y="45" text-anchor="middle" font-size="16">クライアント</text>
+        <text x="100" y="75" text-anchor="middle" font-size="14">GET /cats</text>
+    </g>
+
+    <!-- リクエスト矢印 -->
+    <g transform="translate(250,190)">
+        <path d="M0,0 L200,0" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+        <text x="100" y="-10" text-anchor="middle" font-size="14">HTTPリクエスト</text>
+    </g>
+
+    <!-- コントローラー -->
+    <g transform="translate(450,100)">
+        <rect width="300" height="200" rx="10" fill="#99ccff" stroke="#6699cc"/>
+        <text x="150" y="40" text-anchor="middle" font-size="16" font-weight="bold">CatsController</text>
+        <text x="150" y="70" text-anchor="middle" font-size="14">@Controller('cats')</text>
+        <line x1="30" y1="90" x2="270" y2="90" stroke="#6699cc"/>
+        <text x="50" y="120" text-anchor="start" font-size="14">  @Get()</text>
+        <text x="50" y="150" text-anchor="start" font-size="14">  findAll(): string {</text>
+        <text x="50" y="180" text-anchor="start" font-size="14">    return "This action..."</text>
+        <text x="50" y="210" text-anchor="start" font-size="14">  }</text>
+    </g>
+
+    <!-- レスポンス矢印 -->
+    <g transform="translate(250,250)">
+        <path d="M200,0 L0,0" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+        <text x="100" y="20" text-anchor="middle" font-size="14">レスポンス</text>
+        <text x="100" y="40" text-anchor="middle" font-size="12">"This action returns all cats"</text>
+    </g>
+
+    <!-- 矢印のマーカー定義 -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 L2,5 Z" fill="#666"/>
+        </marker>
+    </defs>
+
+    <!-- 補足説明 -->
+    <g transform="translate(50,320)">
+        <text font-size="16" fill="#666">
+            <tspan x="0" y="0">1. クライアントが GET /cats にアクセス</tspan>
+            <tspan x="0" y="25">2. @Controller('cats')デコレータにより、このコントローラーにルーティング</tspan>
+            <tspan x="0" y="50">3. @Get()デコレータのメソッドが実行され、文字列を返却</tspan>
+        </text>
+    </g>
+</svg> 

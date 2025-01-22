@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800">
+  <style>
+    text { font-family: sans-serif; }
+    .box { stroke-width: 2; }
+    .arrow { stroke: #2d3748; stroke-width: 2; fill: none; }
+    .label { font-size: 14px; fill: #2d3748; font-weight: 500; }
+    .sublabel { font-size: 12px; fill: #4a5568; font-style: italic; }
+    .note { font-size: 12px; fill: #4a5568; }
+    .queue { fill: #faf5ff; stroke: #9f7aea; }
+    .stack { fill: #e6fffa; stroke: #38b2ac; }
+    .hardware { fill: #fff5f5; stroke: #fc8181; }
+    .step { font-size: 12px; fill: #2d3748; }
+  </style>
+  
+  <!-- 背景 -->
+  <rect x="0" y="0" width="800" height="800" fill="#f7fafc"/>
+  
+  <!-- ハードウェアコンポーネント -->
+  <rect x="50" y="50" width="700" height="200" class="hardware"/>
+  <text x="400" y="80" text-anchor="middle" class="label">サーバーハードウェア</text>
+  
+  <!-- CPU -->
+  <rect x="100" y="100" width="150" height="100" fill="#fed7d7" stroke="#fc8181"/>
+  <text x="175" y="150" text-anchor="middle" class="label">CPU</text>
+  <text x="175" y="170" text-anchor="middle" class="sublabel">V8エンジン実行</text>
+  
+  <!-- メモリ -->
+  <rect x="325" y="100" width="150" height="100" fill="#fed7d7" stroke="#fc8181"/>
+  <text x="400" y="150" text-anchor="middle" class="label">メモリ</text>
+  <text x="400" y="170" text-anchor="middle" class="sublabel">データ一時保存</text>
+  
+  <!-- ストレージ -->
+  <rect x="550" y="100" width="150" height="100" fill="#fed7d7" stroke="#fc8181"/>
+  <text x="625" y="150" text-anchor="middle" class="label">ストレージ</text>
+  <text x="625" y="170" text-anchor="middle" class="sublabel">ファイルI/O</text>
+  
+  <!-- Node.js実行環境 -->
+  <rect x="50" y="300" width="700" height="300" fill="#ebf8ff" stroke="#4299e1"/>
+  <text x="400" y="330" text-anchor="middle" class="label">Node.js実行環境</text>
+  
+  <!-- コールスタック -->
+  <rect x="100" y="350" width="150" height="200" class="stack"/>
+  <text x="175" y="380" text-anchor="middle" class="label">コールスタック</text>
+  <text x="175" y="400" text-anchor="middle" class="step">(V8エンジン)</text>
+  <path d="M175,200 L175,350" class="arrow" marker-end="url(#arrowhead)"/>
+  
+  <!-- Node/Web APIs -->
+  <rect x="325" y="350" width="150" height="200" fill="#fff5f5" stroke="#fc8181"/>
+  <text x="400" y="380" text-anchor="middle" class="label">Node/Web APIs</text>
+  <text x="400" y="400" text-anchor="middle" class="step">(C++実装)</text>
+  <path d="M400,200 L400,350" class="arrow" marker-end="url(#arrowhead)"/>
+  
+  <!-- コールバックキュー -->
+  <rect x="550" y="350" width="150" height="200" class="queue"/>
+  <text x="625" y="380" text-anchor="middle" class="label">コールバックキュー</text>
+  <text x="625" y="400" text-anchor="middle" class="step">(タスク待機列)</text>
+  <path d="M625,200 L625,350" class="arrow" marker-end="url(#arrowhead)"/>
+  
+  <!-- イベントループの矢印 -->
+  <path d="M625,550 L625,600 L175,600 L175,550" class="arrow" marker-end="url(#arrowhead)"/>
+  <text x="400" y="620" text-anchor="middle" class="label">イベントループ</text>
+  
+  <!-- 補足説明 -->
+  <rect x="50" y="650" width="700" height="120" fill="#e2e8f0" stroke="#718096" stroke-width="1" rx="5"/>
+  <text x="400" y="680" text-anchor="middle" class="note">1. CPUでV8エンジンを実行し、同期処理とイベントループの管理を行います</text>
+  <text x="400" y="710" text-anchor="middle" class="note">2. メモリには一時的なデータやコールバック関数が保存されます</text>
+  <text x="400" y="740" text-anchor="middle" class="note">3. ファイルI/Oやネットワーク処理は非同期でストレージやネットワークと通信します</text>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2d3748"/>
+    </marker>
+  </defs>
+</svg> 

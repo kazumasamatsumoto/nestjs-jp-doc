@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景 -->
+    <rect width="100%" height="100%" fill="#f8f9fa"/>
+    
+    <!-- タイトル -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-weight="bold">
+        NestJSアーキテクチャによる課題解決
+    </text>
+
+    <!-- 課題のセクション -->
+    <g transform="translate(50,100)">
+        <rect width="300" height="400" rx="10" fill="#e9ecef" stroke="#dee2e6"/>
+        <text x="150" y="30" text-anchor="middle" font-size="18" font-weight="bold">解決すべき課題</text>
+        
+        <!-- コントローラーの主責務 -->
+        <g transform="translate(20,60)">
+            <rect width="260" height="60" y="-15" fill="#ffe4e1" stroke="#ffb6c1" rx="5"/>
+            <text y="0" font-size="14" font-weight="bold">コントローラーの主責務:</text>
+            <text y="30" font-size="14">HTTPリクエストの処理</text>
+        </g>
+
+        <!-- 協調して解決する課題 -->
+        <g transform="translate(20,150)">
+            <text y="0" font-size="14" font-weight="bold">アーキテクチャ全体で解決:</text>
+            
+            <rect width="260" height="30" y="15" fill="#e6e6fa" stroke="#b0c4de" rx="5"/>
+            <text y="35" font-size="14">入力データの検証</text>
+            
+            <rect width="260" height="30" y="55" fill="#e0ffff" stroke="#add8e6" rx="5"/>
+            <text y="75" font-size="14">ビジネスロジックとの分離</text>
+            
+            <rect width="260" height="30" y="95" fill="#f0fff0" stroke="#98fb98" rx="5"/>
+            <text y="115" font-size="14">レスポンス形式の標準化</text>
+            
+            <rect width="260" height="30" y="135" fill="#fff0f5" stroke="#dda0dd" rx="5"/>
+            <text y="155" font-size="14">セキュリティの確保</text>
+            
+            <rect width="260" height="30" y="175" fill="#fffacd" stroke="#f0e68c" rx="5"/>
+            <text y="195" font-size="14">横断的関心事の管理</text>
+        </g>
+    </g>
+
+    <!-- 解決方法のセクション -->
+    <g transform="translate(450,100)">
+        <rect width="300" height="400" rx="10" fill="#e9ecef" stroke="#dee2e6"/>
+        <text x="150" y="30" text-anchor="middle" font-size="18" font-weight="bold">NestJSの解決手段</text>
+        
+        <!-- コントローラーの機能 -->
+        <g transform="translate(20,60)">
+            <rect width="260" height="60" y="-15" fill="#ffe4e1" stroke="#ffb6c1" rx="5"/>
+            <text y="0" font-size="14" font-weight="bold">Controller:</text>
+            <text y="30" font-size="14">デコレータによるルーティング</text>
+        </g>
+
+        <!-- 他のコンポーネント -->
+        <g transform="translate(20,150)">
+            <text y="0" font-size="14" font-weight="bold">その他のコンポーネント:</text>
+            
+            <rect width="260" height="30" y="15" fill="#e6e6fa" stroke="#b0c4de" rx="5"/>
+            <text y="35" font-size="14">Pipes, DTOクラス</text>
+            
+            <rect width="260" height="30" y="55" fill="#e0ffff" stroke="#add8e6" rx="5"/>
+            <text y="75" font-size="14">Services, Repositories</text>
+            
+            <rect width="260" height="30" y="95" fill="#f0fff0" stroke="#98fb98" rx="5"/>
+            <text y="115" font-size="14">Interceptors, Filters</text>
+            
+            <rect width="260" height="30" y="135" fill="#fff0f5" stroke="#dda0dd" rx="5"/>
+            <text y="155" font-size="14">Guards, Auth Modules</text>
+            
+            <rect width="260" height="30" y="175" fill="#fffacd" stroke="#f0e68c" rx="5"/>
+            <text y="195" font-size="14">Middleware, Interceptors</text>
+        </g>
+    </g>
+
+    <!-- 接続線 -->
+    <g transform="translate(0,0)" stroke="#6c757d" stroke-width="1.5" stroke-dasharray="4">
+        <!-- コントローラーの主責務 -->
+        <path d="M330,175 C370,175 410,175 470,175" fill="none"/>
+        <!-- その他の接続 -->
+        <path d="M330,280 C370,280 410,280 470,280" fill="none"/>
+        <path d="M330,320 C370,320 410,320 470,320" fill="none"/>
+        <path d="M330,360 C370,360 410,360 470,360" fill="none"/>
+        <path d="M330,400 C370,400 410,400 470,400" fill="none"/>
+        <path d="M330,440 C370,440 410,440 470,440" fill="none"/>
+    </g>
+
+    <!-- 補足説明 -->
+    <text x="400" y="550" text-anchor="middle" font-size="14" fill="#6c757d">
+        NestJSは各コンポーネントの協調により、これらの課題を体系的に解決します
+    </text>
+</svg> 

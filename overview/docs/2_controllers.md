@@ -2,7 +2,11 @@
 
 NestJS のコントローラーについての解説文書です。コントローラーはクライアントからのリクエストを処理し、レスポンスを返す役割を持ち、デコレータを使用して実装します。ルーティング、HTTP メソッド、パラメータ処理など、基本的な機能を提供します。
 
-# 全体像
+## コントローラーの責務
+
+![NestJSコントローラーの役割と解決方法](/overview/svg/controller-role-and-solutions.svg)
+
+## 全体像
 
 ![全体像](/overview/svg/controller-concept-map-improved.svg)
 
@@ -34,6 +38,8 @@ export class CatsController {
 }
 ```
 
+![まずはここの基礎を図式化します](/overview/svg/controller-routing-flow.svg)
+
 > ヒント
 > CLI を使用してコントローラーを作成するには、`$ nest g controller [name]`コマンドを実行するだけです。
 
@@ -43,9 +49,29 @@ export class CatsController {
 
 前述したように、パスにはコントローラーのパスプレフィックス（オプション）とリクエストメソッドデコレータで宣言されたパス文字列の両方が含まれます。例えば、`cats`というパスプレフィックスと`@Get('breed')`デコレータを組み合わせると、`GET /cats/breed`のようなリクエストに対するルートマッピングが生成されます。
 
+```ts
+// breedを追加した例
+import { Controller, Get } from "@nestjs/common";
+
+@Controller("cats")
+export class CatsController {
+  @Get()
+  findAll(): string {
+    return "This action returns all cats";
+  }
+
+  @Get("breed") // /cats/breed へのルーティング
+  findBreeds(): string {
+    return "This action returns all cat breeds";
+  }
+}
+```
+
 上記の例では、このエンドポイントに GET リクエストが行われると、Nest はリクエストを私たちが定義した`findAll()`メソッドにルーティングします。メソッド名は完全に任意であることに注意してください。ルートにバインドするメソッドを宣言する必要はありますが、Nest はメソッド名に特別な意味を持たせません。
 
 このメソッドは 200 のステータスコードと、この場合は単なる文字列であるレスポンスを返します。なぜこれが起こるのでしょうか？説明するために、まず Nest がレスポンスを操作するために採用している 2 つの異なるオプションを紹介します：
+
+![2つの異なるオプション](/overview/svg/controller-response-approaches.svg)
 
 ### 標準（推奨）
 
@@ -66,6 +92,24 @@ export class CatsController {
 
 > 警告
 > Nest はハンドラーが`@Res()`または`@Next()`を使用していることを検出すると、ライブラリ固有のオプションを選択したと判断します。両方のアプローチを同時に使用すると、このルートに対して標準アプローチは自動的に無効になり、期待通りに動作しなくなります。両方のアプローチを同時に使用するには（例：クッキー/ヘッダーの設定のみにレスポンスオブジェクトを注入し、残りはフレームワークに任せる場合）、`@Res({ passthrough: true })`デコレータで passthrough オプションを true に設定する必要があります。
+
+```ts
+// 推奨されない方法（混乱を招く）
+@Get()
+handler(@Res() res, @Next() next) {
+    res.cookie('key', 'value');
+    return 'このデータは期待通りに送信されない可能性があります';
+}
+
+// 推奨される方法
+@Get()
+handler(@Res({ passthrough: true }) res) {
+    res.cookie('key', 'value');
+    return 'このデータは正しく送信されます';  // NestJSが処理します
+}
+```
+
+![二つの方法を検討](/overview/svg/response-handling-flow.svg)
 
 ## リクエストオブジェクト
 
@@ -103,6 +147,8 @@ export class CatsController {
 
 * 基盤となる HTTP プラットフォーム（Express や Fastify など）間での型の互換性のため、Nest は`@Res()`と`@Response()`デコレータを提供しています。`@Res()`は単に`@Response()`のエイリアスです。両者とも、基盤となるネイティブプラットフォームのレスポンスオブジェクトインターフェースを直接公開します。
 
+![NestJSデコレータ一覧](/overview/svg/controller-decorators-table.svg)
+
 ## リソース
 
 先ほど、cats リソースを取得するエンドポイント（GET ルート）を定義しました。通常、新しいレコードを作成するエンドポイントも提供したいと思います。そのために、POST ハンドラーを作成しましょう：
@@ -126,6 +172,8 @@ export class CatsController {
 ```
 
 これだけです。Nest は標準的な HTTP メソッド全てにデコレータを提供しています：`@Get()`、`@Post()`、`@Put()`、`@Delete()`、`@Patch()`、`@Options()`、`@Head()`です。さらに、`@All()`はこれら全てを処理するエンドポイントを定義します。
+
+![NestJS HTTPメソッドデコレータ一覧](/overview/svg/http-method-decorators-table.svg)
 
 ## ワイルドカードルート
 
@@ -161,6 +209,8 @@ create() {
 
 多くの場合、ステータスコードは静的ではなく、様々な要因に依存します。その場合、ライブラリ固有のレスポンスオブジェクト（`@Res()`を使用して注入）を使用するか、エラーの場合は例外をスローすることができます。
 
+![ステータスコードの例](/overview/svg/http-status-codes-table.svg)
+
 ## ヘッダー
 
 カスタムレスポンスヘッダーを指定するには、`@Header()`デコレータを使用するか、ライブラリ固有のレスポンスオブジェクト（`res.header()`を直接呼び出す）を使用します：
@@ -172,6 +222,55 @@ create() {
   return 'This action adds a new cat';
 }
 ```
+
+ヘッダーの用途について説明させていただきます。
+
+> レスポンスヘッダーは、以下のような重要な用途で使用されます：
+
+1. **キャッシュ制御**
+
+```typescript
+@Header('Cache-Control', 'no-store') // ブラウザにキャッシュさせない
+@Header('Cache-Control', 'max-age=3600') // 1時間キャッシュを許可
+```
+
+2. **セキュリティ対策**
+
+```typescript
+@Header('X-Frame-Options', 'DENY') // クリックジャッキング対策
+@Header('Content-Security-Policy', "default-src 'self'") // XSS対策
+```
+
+3. **CORS 設定**
+
+```typescript
+@Header('Access-Control-Allow-Origin', 'https://example.com')
+@Header('Access-Control-Allow-Methods', 'GET,POST')
+```
+
+4. **コンテンツタイプの指定**
+
+```typescript
+@Header('Content-Type', 'application/json')
+@Header('Content-Type', 'text/plain')
+```
+
+5. **認証・認可**
+
+```typescript
+@Header('WWW-Authenticate', 'Bearer')
+```
+
+このように、ヘッダーは Web アプリケーションの:
+
+- セキュリティ
+- パフォーマンス最適化
+- ブラウザの動作制御
+- クライアント-サーバー間の通信制御
+
+などの重要な役割を担っています。
+
+NestJS では`@Header()`デコレータを使用することで、これらのヘッダーを簡単に設定できます。また、より動的な制御が必要な場合は、`@Res()`を使用してレスポンスオブジェクトを直接操作することもできます。
 
 > ヒント
 > `Header`は`@nestjs/common`パッケージからインポートします。
@@ -186,6 +285,83 @@ create() {
 @Get()
 @Redirect('https://nestjs.com', 301)
 ```
+
+### リダイレクトの主なユースケース
+
+![リダイレクトの主なユースケース](/overview/svg/controller-redirect-usecase.svg)
+
+1. **認証・認可後のリダイレクト**
+
+```typescript
+@Get('login')
+@Redirect()
+async login() {
+  // 認証後に適切なページへリダイレクト
+  return {
+    url: isAdmin ? '/admin/dashboard' : '/user/dashboard',
+    statusCode: 302
+  };
+}
+```
+
+2. **URL の正規化**
+
+```typescript
+@Get('old-path')
+@Redirect('new-path', 301)  // 301は永続的リダイレクト
+oldToNew() {
+  // 古いURLから新しいURLへの恒久的なリダイレクト
+}
+```
+
+3. **言語・地域に基づくリダイレクト**
+
+```typescript
+@Get()
+@Redirect()
+async detectLocale(@Headers('accept-language') language: string) {
+  return {
+    url: `/${language}/home`,
+    statusCode: 302
+  };
+}
+```
+
+4. **A/B テスト**
+
+```typescript
+@Get('campaign')
+@Redirect()
+async abTest() {
+  // ユーザーを異なるバージョンにランダムに振り分け
+  return {
+    url: Math.random() > 0.5 ? '/version-a' : '/version-b',
+    statusCode: 302
+  };
+}
+```
+
+5. **メンテナンス・障害時の切り替え**
+
+```typescript
+@Get('service')
+@Redirect()
+async checkService() {
+  if (isMaintenanceMode) {
+    return { url: '/maintenance', statusCode: 307 }; // 一時的リダイレクト
+  }
+  return { url: '/service', statusCode: 200 };
+}
+```
+
+このように、リダイレクト機能は:
+
+- ユーザー体験の最適化
+- システムの柔軟な運用
+- セキュリティ制御
+- トラフィック制御
+
+などの重要な役割を果たします。NestJS の`@Redirect()`デコレータを使用することで、これらの実装を簡潔に行うことができます。
 
 ## サブドメインルーティング
 
@@ -216,15 +392,155 @@ export class AccountController {
 }
 ```
 
+サブドメインルーティングについて具体例を交えて説明させていただきます。
+
+### サブドメインルーティングとは？
+
+サブドメインとは、メインドメインの前につけられる追加的なドメイン部分です。例えば：
+
+- `example.com` がメインドメインの場合
+- `admin.example.com`
+- `blog.example.com`
+- `api.example.com`
+  などがサブドメインとなります。
+
+### 実装例と使用例
+
+1. **管理者用インターフェース**
+
+```typescript
+@Controller({ host: "admin.example.com" })
+export class AdminController {
+  @Get()
+  index(): string {
+    return "管理者ページ"; // admin.example.com にアクセスした時のみ実行
+  }
+}
+```
+
+2. **マルチテナント対応**
+
+```typescript
+@Controller({ host: ":tenant.example.com" })
+export class TenantController {
+  @Get()
+  getTenantInfo(@HostParam("tenant") tenant: string) {
+    // company1.example.com → tenant = "company1"
+    // company2.example.com → tenant = "company2"
+    return `${tenant}のページです`;
+  }
+}
+```
+
+### 主な用途
+
+1. **機能の分離**
+
+   - 管理画面（admin.example.com）
+   - API（api.example.com）
+   - ブログ（blog.example.com）
+
+2. **マルチテナント**
+
+   - client1.example.com
+   - client2.example.com
+   - client3.example.com
+
+3. **地域・言語別サイト**
+   - jp.example.com
+   - us.example.com
+   - uk.example.com
+
+### 注意点
+
+```typescript
+// ⚠️ Fastifyでは動作しません
+@Controller({ host: "admin.example.com" })
+export class AdminController {}
+
+// ✅ Expressでは問題なく動作します
+@Controller({ host: "admin.example.com" })
+export class AdminController {}
+```
+
+このように、サブドメインルーティングは異なるサブドメインへのアクセスを異なるコントローラーで処理できる機能です。マルチテナントシステムや機能の論理的な分離に特に有用です。
+
 ## スコープ
 
-異なるプログラミング言語のバックグラウンドを持つ人々にとって、Nest ではほとんどすべてのものが着信リクエスト間で共有されていることを知るのは予想外かもしれません。データベースへの接続プール、グローバル状態を持つシングルトンサービスなどがあります。Node.js は、各リクエストが別のスレッドで処理されるマルチスレッドステートレスモデルに従っていないことを覚えておいてください。したがって、シングルトンインスタンスの使用は、私たちのアプリケーションにとって完全に安全です。
+NestJS のインスタンス共有モデルは、他の言語からの開発者にとって意外かもしれません。
 
-ただし、コントローラーのリクエストベースのライフタイムが望ましい動作となるエッジケースがあります。例えば、GraphQL アプリケーションでのリクエストごとのキャッシュ、リクエストトラッキング、マルチテナンシーなどです。スコープの制御方法については[こちら]で学ぶことができます。
+![NestJSインスタンス共有モデル](/overview/svg/controller-scope-concept.svg)
+
+### シングルトンスコープ
+
+- アプリケーション起動時に 1 回だけインスタンス化
+- メモリに常駐し続ける
+- 全てのリクエストで同じインスタンスを共有
+
+```typescript
+@Injectable()
+export class DatabaseService {
+  constructor() {
+    // アプリケーション起動時に1回だけ実行される
+    console.log("データベース接続を確立");
+  }
+}
+```
+
+### リクエストスコープ
+
+- リクエストが来るたびに新しいインスタンスを作成
+- リクエスト完了後にガベージコレクション
+- リクエストごとに独立した状態を持つ
+
+```typescript
+@Injectable({ scope: Scope.REQUEST })
+export class UserContextService {
+  constructor() {
+    // リクエストごとに実行される
+    console.log("新しいユーザーコンテキストを作成");
+  }
+}
+```
+
+![スコープのインスタンスのライフサイクル](/overview/svg/controller-scope-lifecycle.svg)
+
+このように：
+
+1. シングルトンスコープのインスタンスは「一度作って長く使う」
+2. リクエストスコープのインスタンスは「必要な時に作って、すぐ捨てる」
+
+という特徴を持っています。これにより、メモリ使用とパフォーマンスの最適なバランスを取ることができます。
+
+### デフォルトの動作（シングルトン）
+
+- データベース接続
+- サービスインスタンス
+- グローバル状態
+  これらは全てのリクエスト間で共有されます。
+
+### なぜ安全なのか？
+
+Node.js は他の言語（Java, PHP など）とは異なり、リクエストごとに新しいスレッドやプロセスを作成しません。代わりに、単一のイベントループモデルを使用します。そのため、シングルトンインスタンスの使用は安全です。
+
+### リクエストスコープ
+
+ただし、リクエストごとに新しいインスタンスが必要な場合もあります。例えば：
+
+- リクエストごとのキャッシュ管理
+- リクエストトラッキング
+- マルチテナンシー（複数顧客対応）
+- ユーザー固有の状態管理
+
+スコープの制御方法については[こちら]で学ぶことができます。
 
 ## 非同期性
 
 私たちは現代の JavaScript を愛しており、データの抽出のほとんどが非同期であることを知っています。そのため、Nest は非同期関数をサポートし、うまく連携します。
+
+### Node.js における非同期の基本的概念
+
+![非同期処理の基本概念](/overview/svg/async-processing-concept.svg)
 
 > ヒント
 > async/await 機能についての詳細は[こちら]で学べます。
@@ -232,22 +548,35 @@ export class AccountController {
 すべての非同期関数は Promise を返す必要があります。これは、Nest が自身で解決できる遅延値を返すことができることを意味します。例を見てみましょう：
 
 ```typescript
-@Get()
-async findAll(): Promise<any[]> {
-  return [];
+// 例1: データベースからのユーザー取得
+@Get('users')
+async findAllUsers(): Promise<User[]> {
+  // この処理は時間がかかる可能性がありますが、
+  // 他のリクエストをブロックしません
+  return await this.userService.findAll();
+}
+
+// 例2: 同時に複数の非同期処理を実行
+@Get('dashboard')
+async getDashboardData(): Promise<DashboardData> {
+  const [users, posts, comments] = await Promise.all([
+    this.userService.findAll(),
+    this.postService.findAll(),
+    this.commentService.findAll()
+  ]);
+  return { users, posts, comments };
 }
 ```
 
-上記のコードは完全に有効です。さらに、Nest のルートハンドラーはより強力で、RxJS の Observable ストリームを返すこともできます。Nest は自動的にソースをサブスクライブし、（ストリームが完了したら）最後に発行された値を取得します：
+### Node.js の非同期処理の実行フロー
 
-```typescript
-@Get()
-findAll(): Observable<any[]> {
-  return of([]);
-}
-```
+![非同期処理の実行フロー](/overview/svg/async-execution-flow.svg)
 
-上記の両方のアプローチが機能し、要件に合わせて使用することができます。
+### イベントループにおけるハードウェアとの関連性
+
+![Node.jsの非同期のしくみ](/overview/svg/async-eventloop-detail.svg)
+
+上記のコードは完全に有効です。さらに、Nest のルートハンドラーはより強力で、RxJS の Observable ストリームを返すこともできます。Nest は自動的にソースをサブスクライブし、（ストリームが完了したら）最後に発行された値を取得します。
 
 ## リクエストペイロード
 

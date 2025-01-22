@@ -1,0 +1,103 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .header { fill: #FFFFFF; font-weight: bold; }
+        .cell { fill: #333333; }
+        text { font-family: sans-serif; font-size: 14px; }
+        .alt { fill: #F5F5F5; }
+    </style>
+    
+    <!-- タイトル -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" fill="#333333">NestJSコントローラーデコレータ一覧</text>
+    
+    <!-- ヘッダー -->
+    <rect x="50" y="50" width="200" height="40" fill="#4F46E5"/>
+    <rect x="250" y="50" width="300" height="40" fill="#4F46E5"/>
+    <rect x="550" y="50" width="200" height="40" fill="#4F46E5"/>
+    
+    <text x="150" y="75" class="header" text-anchor="middle">デコレータ</text>
+    <text x="400" y="75" class="header" text-anchor="middle">対応するExpress/Fastifyオブジェクト</text>
+    <text x="650" y="75" class="header" text-anchor="middle">主な用途</text>
+
+    <!-- データ行 -->
+    <g transform="translate(0,40)">
+        <!-- @Request(), @Req() -->
+        <rect x="50" y="50" width="200" height="40" class="alt"/>
+        <rect x="250" y="50" width="300" height="40" class="alt"/>
+        <rect x="550" y="50" width="200" height="40" class="alt"/>
+        <text x="150" y="75" class="cell" text-anchor="middle">@Request(), @Req()</text>
+        <text x="400" y="75" class="cell" text-anchor="middle">req</text>
+        <text x="650" y="75" class="cell" text-anchor="middle">リクエスト全体へのアクセス</text>
+
+        <!-- @Response(), @Res() -->
+        <rect x="50" y="90" width="200" height="40" fill="#FFFFFF"/>
+        <rect x="250" y="90" width="300" height="40" fill="#FFFFFF"/>
+        <rect x="550" y="90" width="200" height="40" fill="#FFFFFF"/>
+        <text x="150" y="115" class="cell" text-anchor="middle">@Response(), @Res()</text>
+        <text x="400" y="115" class="cell" text-anchor="middle">res</text>
+        <text x="650" y="115" class="cell" text-anchor="middle">レスポンス制御</text>
+
+        <!-- @Next() -->
+        <rect x="50" y="130" width="200" height="40" class="alt"/>
+        <rect x="250" y="130" width="300" height="40" class="alt"/>
+        <rect x="550" y="130" width="200" height="40" class="alt"/>
+        <text x="150" y="155" class="cell" text-anchor="middle">@Next()</text>
+        <text x="400" y="155" class="cell" text-anchor="middle">next</text>
+        <text x="650" y="155" class="cell" text-anchor="middle">次のハンドラーへの制御移譲</text>
+
+        <!-- @Session() -->
+        <rect x="50" y="170" width="200" height="40" fill="#FFFFFF"/>
+        <rect x="250" y="170" width="300" height="40" fill="#FFFFFF"/>
+        <rect x="550" y="170" width="200" height="40" fill="#FFFFFF"/>
+        <text x="150" y="195" class="cell" text-anchor="middle">@Session()</text>
+        <text x="400" y="195" class="cell" text-anchor="middle">req.session</text>
+        <text x="650" y="195" class="cell" text-anchor="middle">セッション管理</text>
+
+        <!-- @Param() -->
+        <rect x="50" y="210" width="200" height="40" class="alt"/>
+        <rect x="250" y="210" width="300" height="40" class="alt"/>
+        <rect x="550" y="210" width="200" height="40" class="alt"/>
+        <text x="150" y="235" class="cell" text-anchor="middle">@Param(key?)</text>
+        <text x="400" y="235" class="cell" text-anchor="middle">req.params / req.params[key]</text>
+        <text x="650" y="235" class="cell" text-anchor="middle">URLパラメータの取得</text>
+
+        <!-- @Body() -->
+        <rect x="50" y="250" width="200" height="40" fill="#FFFFFF"/>
+        <rect x="250" y="250" width="300" height="40" fill="#FFFFFF"/>
+        <rect x="550" y="250" width="200" height="40" fill="#FFFFFF"/>
+        <text x="150" y="275" class="cell" text-anchor="middle">@Body(key?)</text>
+        <text x="400" y="275" class="cell" text-anchor="middle">req.body / req.body[key]</text>
+        <text x="650" y="275" class="cell" text-anchor="middle">リクエストボディの取得</text>
+
+        <!-- @Query() -->
+        <rect x="50" y="290" width="200" height="40" class="alt"/>
+        <rect x="250" y="290" width="300" height="40" class="alt"/>
+        <rect x="550" y="290" width="200" height="40" class="alt"/>
+        <text x="150" y="315" class="cell" text-anchor="middle">@Query(key?)</text>
+        <text x="400" y="315" class="cell" text-anchor="middle">req.query / req.query[key]</text>
+        <text x="650" y="315" class="cell" text-anchor="middle">クエリパラメータの取得</text>
+
+        <!-- @Headers() -->
+        <rect x="50" y="330" width="200" height="40" fill="#FFFFFF"/>
+        <rect x="250" y="330" width="300" height="40" fill="#FFFFFF"/>
+        <rect x="550" y="330" width="200" height="40" fill="#FFFFFF"/>
+        <text x="150" y="355" class="cell" text-anchor="middle">@Headers(name?)</text>
+        <text x="400" y="355" class="cell" text-anchor="middle">req.headers / req.headers[name]</text>
+        <text x="650" y="355" class="cell" text-anchor="middle">HTTPヘッダーの取得</text>
+
+        <!-- @Ip() -->
+        <rect x="50" y="370" width="200" height="40" class="alt"/>
+        <rect x="250" y="370" width="300" height="40" class="alt"/>
+        <rect x="550" y="370" width="200" height="40" class="alt"/>
+        <text x="150" y="395" class="cell" text-anchor="middle">@Ip()</text>
+        <text x="400" y="395" class="cell" text-anchor="middle">req.ip</text>
+        <text x="650" y="395" class="cell" text-anchor="middle">クライアントIPの取得</text>
+
+        <!-- @HostParam() -->
+        <rect x="50" y="410" width="200" height="40" fill="#FFFFFF"/>
+        <rect x="250" y="410" width="300" height="40" fill="#FFFFFF"/>
+        <rect x="550" y="410" width="200" height="40" fill="#FFFFFF"/>
+        <text x="150" y="435" class="cell" text-anchor="middle">@HostParam()</text>
+        <text x="400" y="435" class="cell" text-anchor="middle">req.hosts</text>
+        <text x="650" y="435" class="cell" text-anchor="middle">ホストパラメータの取得</text>
+    </g>
+</svg> 

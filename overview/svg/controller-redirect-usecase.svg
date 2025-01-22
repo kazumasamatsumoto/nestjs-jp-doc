@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" style="background-color: #fafafa;">
+  <!-- スタイル定義 -->
+  <defs>
+    <style>
+      .title { font-size: 20px; font-weight: bold; }
+      .text { font-size: 14px; }
+      .box { fill: #ffffff; stroke: #333; stroke-width: 2; }
+      .arrow { stroke: #666; stroke-width: 2; marker-end: url(#arrowhead); }
+      .highlight { fill: #f0f7ff; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+
+  <!-- タイトル -->
+  <text x="50" y="40" class="title">サーバーサイドリダイレクトのユースケース</text>
+
+  <!-- メインの図式 -->
+  <g transform="translate(50,80)">
+    <!-- セキュリティ関連 -->
+    <rect x="20" y="20" width="200" height="100" class="box highlight"/>
+    <text x="30" y="45" class="text">セキュリティ制御</text>
+    <text x="30" y="70" class="text">- 認証後のリダイレクト</text>
+    <text x="30" y="90" class="text">- HTTPS強制リダイレクト</text>
+    <text x="30" y="110" class="text">- セキュアページへの誘導</text>
+
+    <!-- ユーザー体験最適化 -->
+    <rect x="20" y="140" width="200" height="100" class="box"/>
+    <text x="30" y="165" class="text">UX最適化</text>
+    <text x="30" y="190" class="text">- 言語/地域別ページ</text>
+    <text x="30" y="210" class="text">- デバイス最適化ページ</text>
+    <text x="30" y="230" class="text">- A/Bテスト振り分け</text>
+
+    <!-- システム運用 -->
+    <rect x="20" y="260" width="200" height="100" class="box"/>
+    <text x="30" y="285" class="text">システム運用</text>
+    <text x="30" y="310" class="text">- メンテナンスページ</text>
+    <text x="30" y="330" class="text">- 負荷分散</text>
+    <text x="30" y="350" class="text">- 旧URL→新URL移行</text>
+
+    <!-- サーバーの処理フロー -->
+    <g transform="translate(300,20)">
+      <rect x="0" y="0" width="400" height="340" class="box"/>
+      <text x="20" y="30" class="text">サーバーサイドの処理フロー</text>
+      
+      <!-- フローチャート -->
+      <circle cx="70" cy="70" r="20" class="box"/>
+      <text x="60" y="75" class="text">開始</text>
+
+      <rect x="20" y="120" width="100" height="40" class="box"/>
+      <text x="35" y="145" class="text">リクエスト</text>
+
+      <path d="M70 90 L70 120" class="arrow"/>
+
+      <rect x="160" y="120" width="120" height="40" class="box"/>
+      <text x="175" y="145" class="text">条件チェック</text>
+
+      <path d="M120 140 L160 140" class="arrow"/>
+
+      <rect x="20" y="200" width="260" height="100" class="box highlight"/>
+      <text x="35" y="225" class="text">リダイレクト判断</text>
+      <text x="35" y="250" class="text">- ステータスコード選択</text>
+      <text x="35" y="270" class="text">  (301: 恒久/302: 一時)</text>
+      <text x="35" y="290" class="text">- リダイレクト先URL生成</text>
+
+      <path d="M220 160 L220 200" class="arrow"/>
+    </g>
+  </g>
+
+  <!-- 補足説明 -->
+  <text x="50" y="550" class="text" fill="#666">
+    注: リダイレクトはユーザーを適切なリソースに誘導し、セキュリティと利便性を両立させる重要な機能です
+  </text>
+</svg> 

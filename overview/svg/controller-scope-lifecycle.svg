@@ -1,0 +1,47 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景 -->
+    <rect width="100%" height="100%" fill="#f8f9fa"/>
+
+    <!-- アプリケーションのライフサイクル -->
+    <g transform="translate(50,50)">
+        <rect width="700" height="100" fill="#e3f2fd" stroke="#1976d2"/>
+        <text x="350" y="40" text-anchor="middle" font-weight="bold">シングルトンスコープ</text>
+        <text x="350" y="70" text-anchor="middle">アプリケーション起動時に作成 → アプリケーション終了まで生存</text>
+    </g>
+
+    <!-- リクエストのライフサイクル -->
+    <g transform="translate(50,200)">
+        <rect width="200" height="80" fill="#f3e5f5" stroke="#7b1fa2"/>
+        <text x="100" y="30" text-anchor="middle" font-weight="bold">リクエスト1</text>
+        <text x="100" y="50" text-anchor="middle" font-size="12">インスタンス作成</text>
+        <text x="100" y="70" text-anchor="middle" font-size="12">処理後破棄</text>
+        
+        <!-- 矢印 -->
+        <path d="M200,40 L300,40" stroke="#7b1fa2" stroke-width="2" marker-end="url(#arrowhead)"/>
+    </g>
+
+    <g transform="translate(300,200)">
+        <rect width="200" height="80" fill="#f3e5f5" stroke="#7b1fa2"/>
+        <text x="100" y="30" text-anchor="middle" font-weight="bold">リクエスト2</text>
+        <text x="100" y="50" text-anchor="middle" font-size="12">インスタンス作成</text>
+        <text x="100" y="70" text-anchor="middle" font-size="12">処理後破棄</text>
+        
+        <!-- 矢印 -->
+        <path d="M200,40 L250,40" stroke="#7b1fa2" stroke-width="2" marker-end="url(#arrowhead)"/>
+    </g>
+
+    <g transform="translate(550,200)">
+        <rect width="200" height="80" fill="#f3e5f5" stroke="#7b1fa2"/>
+        <text x="100" y="30" text-anchor="middle" font-weight="bold">リクエスト3</text>
+        <text x="100" y="50" text-anchor="middle" font-size="12">インスタンス作成</text>
+        <text x="100" y="70" text-anchor="middle" font-size="12">処理後破棄</text>
+    </g>
+
+    <!-- 矢印の定義 -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#7b1fa2"/>
+        </marker>
+    </defs>
+</svg> 

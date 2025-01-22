@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景 -->
+    <rect width="800" height="500" fill="#ffffff"/>
+    
+    <!-- タイトル -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#333333">
+        HTTPステータスコード使用例
+    </text>
+
+    <!-- テーブルヘッダー -->
+    <rect x="50" y="60" width="200" height="40" fill="#4CAF50"/>
+    <rect x="250" y="60" width="300" height="40" fill="#4CAF50"/>
+    <rect x="550" y="60" width="200" height="40" fill="#4CAF50"/>
+
+    <text x="150" y="85" text-anchor="middle" fill="white" font-weight="bold">ステータスコード</text>
+    <text x="400" y="85" text-anchor="middle" fill="white" font-weight="bold">使用例</text>
+    <text x="650" y="85" text-anchor="middle" fill="white" font-weight="bold">コード例</text>
+
+    <!-- テーブル行 -->
+    <!-- 201 Created -->
+    <rect x="50" y="100" width="200" height="60" fill="#f5f5f5"/>
+    <rect x="250" y="100" width="300" height="60" fill="#f5f5f5"/>
+    <rect x="550" y="100" width="200" height="60" fill="#f5f5f5"/>
+    
+    <text x="150" y="135" text-anchor="middle">201 Created</text>
+    <text x="400" y="135" text-anchor="middle">新しいリソースの作成成功</text>
+    <text x="650" y="135" text-anchor="middle">@HttpCode(201)</text>
+
+    <!-- 204 No Content -->
+    <rect x="50" y="160" width="200" height="60" fill="#ffffff"/>
+    <rect x="250" y="160" width="300" height="60" fill="#ffffff"/>
+    <rect x="550" y="160" width="200" height="60" fill="#ffffff"/>
+    
+    <text x="150" y="195" text-anchor="middle">204 No Content</text>
+    <text x="400" y="195" text-anchor="middle">成功したが返すデータなし</text>
+    <text x="650" y="195" text-anchor="middle">@HttpCode(204)</text>
+
+    <!-- 202 Accepted -->
+    <rect x="50" y="220" width="200" height="60" fill="#f5f5f5"/>
+    <rect x="250" y="220" width="300" height="60" fill="#f5f5f5"/>
+    <rect x="550" y="220" width="200" height="60" fill="#f5f5f5"/>
+    
+    <text x="150" y="255" text-anchor="middle">202 Accepted</text>
+    <text x="400" y="255" text-anchor="middle">非同期処理の受付完了</text>
+    <text x="650" y="255" text-anchor="middle">@HttpCode(202)</text>
+
+    <!-- 304 Not Modified -->
+    <rect x="50" y="280" width="200" height="60" fill="#ffffff"/>
+    <rect x="250" y="280" width="300" height="60" fill="#ffffff"/>
+    <rect x="550" y="280" width="200" height="60" fill="#ffffff"/>
+    
+    <text x="150" y="315" text-anchor="middle">304 Not Modified</text>
+    <text x="400" y="315" text-anchor="middle">リソースが変更されていない</text>
+    <text x="650" y="315" text-anchor="middle">@HttpCode(304)</text>
+
+    <!-- 301 Moved Permanently -->
+    <rect x="50" y="340" width="200" height="60" fill="#f5f5f5"/>
+    <rect x="250" y="340" width="300" height="60" fill="#f5f5f5"/>
+    <rect x="550" y="340" width="200" height="60" fill="#f5f5f5"/>
+    
+    <text x="150" y="375" text-anchor="middle">301 Moved Permanently</text>
+    <text x="400" y="375" text-anchor="middle">恒久的なリダイレクト</text>
+    <text x="650" y="375" text-anchor="middle">@HttpCode(301)</text>
+
+    <!-- 注釈 -->
+    <text x="50" y="450" font-size="14" fill="#666666">
+        注: デフォルトのステータスコードは200 OK（POSTリクエストの場合は201）です
+    </text>
+</svg> 

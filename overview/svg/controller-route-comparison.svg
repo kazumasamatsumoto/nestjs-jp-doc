@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景 -->
+    <rect width="100%" height="100%" fill="#f8f9fa"/>
+    
+    <!-- タイトル -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-weight="bold">
+        ルーティングパターンの比較
+    </text>
+
+    <!-- パターン1: 基本的なルーティング -->
+    <g transform="translate(50,80)">
+        <rect width="300" height="140" rx="10" fill="#ffe4e1" stroke="#ffb6c1"/>
+        <text x="150" y="30" text-anchor="middle" font-size="16" font-weight="bold">パターン1: 基本ルート</text>
+        
+        <!-- コード -->
+        <g transform="translate(20,50)">
+            <text x="0" y="0" font-family="monospace" font-size="14">@Controller('cats')</text>
+            <text x="0" y="25" font-family="monospace" font-size="14">@Get()</text>
+            <text x="0" y="50" font-family="monospace" font-size="14">findAll()</text>
+        </g>
+
+        <!-- 結果のURL -->
+        <rect x="20" y="90" width="260" height="30" rx="5" fill="#fff" stroke="#ffb6c1"/>
+        <text x="150" y="110" text-anchor="middle" font-size="14">GET /cats</text>
+    </g>
+
+    <!-- パターン2: サブパスを持つルーティング -->
+    <g transform="translate(450,80)">
+        <rect width="300" height="140" rx="10" fill="#e0ffff" stroke="#add8e6"/>
+        <text x="150" y="30" text-anchor="middle" font-size="16" font-weight="bold">パターン2: サブパス追加</text>
+        
+        <!-- コード -->
+        <g transform="translate(20,50)">
+            <text x="0" y="0" font-family="monospace" font-size="14">@Controller('cats')</text>
+            <text x="0" y="25" font-family="monospace" font-size="14">@Get('breed')</text>
+            <text x="0" y="50" font-family="monospace" font-size="14">findBreeds()</text>
+        </g>
+
+        <!-- 結果のURL -->
+        <rect x="20" y="90" width="260" height="30" rx="5" fill="#fff" stroke="#add8e6"/>
+        <text x="150" y="110" text-anchor="middle" font-size="14">GET /cats/breed</text>
+    </g>
+
+    <!-- 説明部分 -->
+    <g transform="translate(50,260)">
+        <text font-size="14" fill="#666">
+            <tspan x="0" y="0">• パターン1: @Get()は空のパスを使用し、コントローラーのベースパス(/cats)のみでアクセス</tspan>
+            <tspan x="0" y="30">• パターン2: @Get('breed')でサブパスを追加し、/cats/breedという階層的なURLを生成</tspan>
+            <tspan x="0" y="60">• どちらもコントローラーのベースパス(@Controller('cats'))は共通</tspan>
+        </text>
+    </g>
+
+    <!-- 接続を示す矢印 -->
+    <g transform="translate(0,0)" stroke="#666" stroke-width="1.5" stroke-dasharray="4">
+        <path d="M200,170 L200,240" marker-end="url(#arrow)"/>
+        <path d="M600,170 L600,240" marker-end="url(#arrow)"/>
+    </g>
+
+    <!-- 矢印のマーカー定義 -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 L2,5 Z" fill="#666"/>
+        </marker>
+    </defs>
+</svg> 

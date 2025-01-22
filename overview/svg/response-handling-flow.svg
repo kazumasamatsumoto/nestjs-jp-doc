@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景 -->
+    <rect width="800" height="600" fill="#ffffff"/>
+    
+    <!-- タイトル -->
+    <text x="400" y="50" text-anchor="middle" font-size="24" font-weight="bold">NestJSのレスポンス処理フロー</text>
+
+    <!-- 標準アプローチ -->
+    <g transform="translate(100,150)">
+        <rect x="0" y="0" width="200" height="100" fill="#e6f3ff" stroke="#0066cc" rx="10"/>
+        <text x="100" y="40" text-anchor="middle" font-size="16">標準アプローチ</text>
+        <text x="100" y="70" text-anchor="middle" font-size="12">return値を自動処理</text>
+    </g>
+
+    <!-- ライブラリ固有アプローチ -->
+    <g transform="translate(500,150)">
+        <rect x="0" y="0" width="200" height="100" fill="#ffe6e6" stroke="#cc0000" rx="10"/>
+        <text x="100" y="40" text-anchor="middle" font-size="16">ライブラリ固有アプローチ</text>
+        <text x="100" y="70" text-anchor="middle" font-size="12">@Res()による手動処理</text>
+    </g>
+
+    <!-- 問題のケース -->
+    <g transform="translate(300,300)">
+        <rect x="0" y="0" width="200" height="100" fill="#ffebcd" stroke="#ff8c00" rx="10"/>
+        <text x="100" y="40" text-anchor="middle" font-size="16">両方使用時の問題</text>
+        <text x="100" y="60" text-anchor="middle" font-size="12">標準アプローチが</text>
+        <text x="100" y="80" text-anchor="middle" font-size="12">自動的に無効化</text>
+    </g>
+
+    <!-- 解決策 -->
+    <g transform="translate(300,450)">
+        <rect x="0" y="0" width="200" height="100" fill="#e6ffe6" stroke="#006600" rx="10"/>
+        <text x="100" y="40" text-anchor="middle" font-size="16">解決策</text>
+        <text x="100" y="60" text-anchor="middle" font-size="12">@Res({ passthrough: true })</text>
+        <text x="100" y="80" text-anchor="middle" font-size="12">両方のアプローチを併用可能</text>
+    </g>
+
+    <!-- 矢印 -->
+    <g stroke="#666666" stroke-width="2" fill="none">
+        <!-- 標準アプローチから問題ケースへ -->
+        <path d="M 200,250 L 300,300"/>
+        <!-- ライブラリ固有アプローチから問題ケースへ -->
+        <path d="M 600,250 L 500,300"/>
+        <!-- 問題ケースから解決策へ -->
+        <path d="M 400,400 L 400,450"/>
+    </g>
+</svg> 
