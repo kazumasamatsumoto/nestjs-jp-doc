@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200">
+  <!-- Background -->
+  <rect width="800" height="1200" fill="#ffffff"/>
+  
+  <!-- JavaScript -->
+  <rect x="250" y="50" width="300" height="100" rx="10" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+  <text x="270" y="80" font-family="monospace" font-size="14">function add(a, b) {</text>
+  <text x="270" y="100" font-family="monospace" font-size="14">  return a + b;</text>
+  <text x="270" y="120" font-family="monospace" font-size="14">}</text>
+  
+  <!-- AST -->
+  <rect x="250" y="250" width="300" height="160" rx="10" fill="#e6f3ff" stroke="#2196f3" stroke-width="2"/>
+  <text x="270" y="280" font-family="monospace" font-size="14">FunctionDeclaration {</text>
+  <text x="290" y="300" font-family="monospace" font-size="14">  name: "add",</text>
+  <text x="290" y="320" font-family="monospace" font-size="14">  params: ["a", "b"],</text>
+  <text x="290" y="340" font-family="monospace" font-size="14">  body: {</text>
+  <text x="310" y="360" font-family="monospace" font-size="14">    return BinaryExp(+)</text>
+  <text x="290" y="380" font-family="monospace" font-size="14">  }</text>
+  <text x="270" y="400" font-family="monospace" font-size="14">}</text>
+  
+  <!-- Bytecode -->
+  <rect x="250" y="500" width="300" height="140" rx="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+  <text x="270" y="530" font-family="monospace" font-size="14">LdaZero              ; 0</text>
+  <text x="270" y="550" font-family="monospace" font-size="14">Star r1              ; r1=0</text>
+  <text x="270" y="570" font-family="monospace" font-size="14">Ldar a0              ; a</text>
+  <text x="270" y="590" font-family="monospace" font-size="14">Add a1               ; a+b</text>
+  <text x="270" y="610" font-family="monospace" font-size="14">Return               ; ret</text>
+
+  <!-- Hot Path Detection -->
+  <text x="400" y="700" font-family="Arial" font-size="16" fill="#ff5722">ホットコード検出!</text>
+  
+  <!-- IR -->
+  <rect x="250" y="750" width="300" height="160" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+  <text x="270" y="780" font-family="monospace" font-size="14">IR (中間表現)</text>
+  <text x="270" y="810" font-family="monospace" font-size="14">%0 = Parameter(0)    ; a</text>
+  <text x="270" y="830" font-family="monospace" font-size="14">%1 = Parameter(1)    ; b</text>
+  <text x="270" y="850" font-family="monospace" font-size="14">%2 = Int32Add(%0, %1)</text>
+  <text x="270" y="870" font-family="monospace" font-size="14">Return %2</text>
+  
+  <!-- MIPS -->
+  <rect x="250" y="1000" width="300" height="140" rx="10" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
+  <text x="270" y="1030" font-family="monospace" font-size="14">lw   $t0, 4($sp)     ; a</text>
+  <text x="270" y="1050" font-family="monospace" font-size="14">lw   $t1, 8($sp)     ; b</text>
+  <text x="270" y="1070" font-family="monospace" font-size="14">add  $v0, $t0, $t1   ; a + b</text>
+  <text x="270" y="1090" font-family="monospace" font-size="14">jr   $ra             ; return</text>
+  
+  <!-- Arrows -->
+  <path d="M400 150 L400 250" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M400 410 L400 500" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M400 640 L400 750" fill="none" stroke="#ff5722" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+  <path d="M400 910 L400 1000" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Labels -->
+  <text x="420" y="200" font-family="Arial" font-size="14">パース</text>
+  <text x="420" y="460" font-family="Arial" font-size="14">コンパイル</text>
+  <text x="420" y="950" font-family="Arial" font-size="14">最適化</text>
+  
+  <!-- Headers -->
+  <text x="280" y="30" text-anchor="middle" font-family="Arial" font-size="16">JavaScript</text>
+  <text x="280" y="230" text-anchor="middle" font-family="Arial" font-size="16">AST</text>
+  <text x="280" y="480" text-anchor="middle" font-family="Arial" font-size="16">Bytecode</text>
+  <text x="280" y="730" text-anchor="middle" font-family="Arial" font-size="16">TurboFan 最適化</text>
+  <text x="280" y="980" text-anchor="middle" font-family="Arial" font-size="16">MIPS アセンブリ</text>
+  
+  <!-- Arrow Marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+</svg>

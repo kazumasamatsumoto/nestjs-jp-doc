@@ -1,0 +1,40 @@
+<svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="300" fill="#ffffff"/>
+  
+  <!-- タイムライン -->
+  <line x1="50" y1="250" x2="750" y2="250" stroke="#333" stroke-width="2"/>
+  
+  <!-- 実行フロー -->
+  <g transform="translate(100,200)">
+    <!-- fetchData前半 -->
+    <rect x="0" y="-150" width="150" height="100" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="75" y="-110" text-anchor="middle" font-family="monospace" font-size="12">fetchData</text>
+    <text x="75" y="-90" text-anchor="middle" font-family="monospace" font-size="12">console.log("開始")</text>
+    
+    <!-- someAsyncOperation -->
+    <rect x="250" y="-150" width="150" height="100" fill="#e6f3ff" stroke="#2196f3" stroke-width="2"/>
+    <text x="325" y="-100" text-anchor="middle" font-family="monospace" font-size="12">someAsyncOperation</text>
+    
+    <!-- fetchData後半 -->
+    <rect x="500" y="-150" width="150" height="100" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+    <text x="575" y="-110" text-anchor="middle" font-family="monospace" font-size="12">fetchData</text>
+    <text x="575" y="-90" text-anchor="middle" font-family="monospace" font-size="12">console.log("完了")</text>
+    
+    <!-- 接続矢印 -->
+    <path d="M150 -100 L250 -100" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M400 -100 L500 -100" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- 時間表示 -->
+  <text x="175" y="280" text-anchor="middle">t1: "開始"</text>
+  <text x="425" y="280" text-anchor="middle">t2: 非同期処理</text>
+  <text x="675" y="280" text-anchor="middle">t3: "完了"</text>
+  
+  <!-- Arrow Marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+</svg>

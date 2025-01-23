@@ -1,39 +1,66 @@
-<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-    <!-- JavaScript Code -->
-    <rect x="50" y="50" width="150" height="60" rx="5" fill="#f7df1e"/>
-    <text x="125" y="85" text-anchor="middle" fill="black" font-size="14">JavaScript Code</text>
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect x="0" y="0" width="1200" height="500" fill="#f0f0f0"/>
     
-    <!-- Arrow 1 -->
-    <path d="M 200 80 L 300 80" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+    <!-- JavaScript Code -->
+    <rect x="50" y="50" width="200" height="60" rx="5" fill="#f7df1e"/>
+    <text x="150" y="85" text-anchor="middle" fill="black" font-size="14">JavaScript Code</text>
+    
+    <!-- Arrow 1 Process -->
+    <rect x="300" y="40" width="200" height="80" rx="5" fill="#ffffff" stroke="#666"/>
+    <text x="400" y="70" text-anchor="middle" font-size="14">1. コードを文字列として読み込み</text>
+    <text x="400" y="90" text-anchor="middle" font-size="14">2. 文字列をトークンに分解</text>
     
     <!-- Parser -->
-    <rect x="300" y="50" width="150" height="60" rx="5" fill="#4b8bbe"/>
-    <text x="375" y="85" text-anchor="middle" fill="white" font-size="14">Parser</text>
+    <rect x="550" y="50" width="200" height="60" rx="5" fill="#4b8bbe"/>
+    <text x="650" y="85" text-anchor="middle" fill="white" font-size="14">Parser</text>
     
-    <!-- Arrow 2 -->
-    <path d="M 450 80 L 550 80" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+    <!-- Arrow 2 Process -->
+    <rect x="800" y="40" width="200" height="80" rx="5" fill="#ffffff" stroke="#666"/>
+    <text x="900" y="70" text-anchor="middle" font-size="14">1. 構文解析</text>
+    <text x="900" y="90" text-anchor="middle" font-size="14">2. 木構造に変換</text>
     
     <!-- AST -->
-    <rect x="550" y="50" width="150" height="60" rx="5" fill="#3c873a"/>
-    <text x="625" y="85" text-anchor="middle" fill="white" font-size="14">AST</text>
+    <rect x="1050" y="50" width="100" height="60" rx="5" fill="#3c873a"/>
+    <text x="1100" y="85" text-anchor="middle" fill="white" font-size="14">AST</text>
+    
+    <!-- Arrows -->
+    <path d="M 250 80 L 300 80" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M 500 80 L 550 80" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M 750 80 L 800 80" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M 1000 80 L 1050 80" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
     
     <!-- AST Structure -->
-    <g transform="translate(550, 150)">
+    <g transform="translate(1000, 200)">
         <circle cx="75" cy="0" r="20" fill="#3c873a"/>
-        <text x="75" y="5" text-anchor="middle" fill="white" font-size="12">Root</text>
+        <text x="75" y="5" text-anchor="middle" fill="white" font-size="12">Program</text>
         
         <line x1="75" y1="20" x2="25" y2="60" stroke="#666" stroke-width="2"/>
-        <line x1="75" y1="20" x2="75" y2="60" stroke="#666" stroke-width="2"/>
         <line x1="75" y1="20" x2="125" y2="60" stroke="#666" stroke-width="2"/>
         
         <circle cx="25" cy="80" r="20" fill="#3c873a"/>
-        <text x="25" y="85" text-anchor="middle" fill="white" font-size="12">Node1</text>
-        
-        <circle cx="75" cy="80" r="20" fill="#3c873a"/>
-        <text x="75" y="85" text-anchor="middle" fill="white" font-size="12">Node2</text>
+        <text x="25" y="85" text-anchor="middle" fill="white" font-size="12">Func</text>
         
         <circle cx="125" cy="80" r="20" fill="#3c873a"/>
-        <text x="125" y="85" text-anchor="middle" fill="white" font-size="12">Node3</text>
+        <text x="125" y="85" text-anchor="middle" fill="white" font-size="12">Args</text>
+    </g>
+    
+    <!-- Code Sample -->
+    <g transform="translate(50, 200)">
+        <rect x="0" y="0" width="200" height="100" rx="5" fill="#f7df1e" opacity="0.8"/>
+        <text x="10" y="20" font-family="monospace" font-size="14">
+            <tspan x="10" y="30">function add(a,b) {</tspan>
+            <tspan x="10" y="50">  return a + b;</tspan>
+            <tspan x="10" y="70">}</tspan>
+        </text>
+    </g>
+    
+    <!-- Parser Details -->
+    <g transform="translate(500, 200)">
+        <rect x="0" y="0" width="300" height="100" rx="5" fill="#4b8bbe" opacity="0.8"/>
+        <text x="150" y="30" text-anchor="middle" fill="white" font-size="14">Tokenization</text>
+        <text x="150" y="50" text-anchor="middle" fill="white" font-size="14">[function][add][(][a][,][b][)]</text>
+        <text x="150" y="70" text-anchor="middle" fill="white" font-size="14">[{][return][a][+][b][;][}]</text>
     </g>
     
     <!-- Arrow definition -->
@@ -42,22 +69,4 @@
             <path d="M0,0 L10,5 L0,10 L2,5 Z" fill="black"/>
         </marker>
     </defs>
-    
-    <!-- Code Sample -->
-    <g transform="translate(50, 150)">
-        <rect x="0" y="0" width="150" height="100" rx="5" fill="#f7df1e" opacity="0.8"/>
-        <text x="10" y="20" font-family="monospace" font-size="12">
-            <tspan x="10" y="30">function add(a,b) {</tspan>
-            <tspan x="10" y="50">  return a + b;</tspan>
-            <tspan x="10" y="70">}</tspan>
-        </text>
-    </g>
-    
-    <!-- Parser Details -->
-    <g transform="translate(300, 150)">
-        <rect x="0" y="0" width="150" height="100" rx="5" fill="#4b8bbe" opacity="0.8"/>
-        <text x="75" y="30" text-anchor="middle" fill="white" font-size="12">Tokenization</text>
-        <text x="75" y="50" text-anchor="middle" fill="white" font-size="12">↓</text>
-        <text x="75" y="70" text-anchor="middle" fill="white" font-size="12">Syntax Analysis</text>
-    </g>
 </svg>
