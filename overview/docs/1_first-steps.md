@@ -34,7 +34,7 @@ $ nest new project-name
 
 project-name ディレクトリが作成され、node モジュールといくつかの基本ファイルがインストールされ、src/ディレクトリが作成されて複数のコアファイルが配置されます。
 
-![環境構築に関する図式化](/overview/svg/nestjs-setup-flow.svg)
+![環境構築に関する図式化](/overview/svg/1_first-steps/nestjs-setup-flow.svg)
 
 ```
 src/
@@ -133,7 +133,7 @@ $ npm run format
 
 ## NestJS の構成
 
-![構成の図式化](/overview/svg/nestjs-basic-structure.svg)
+![構成の図式化](/overview/svg/1_first-steps/nestjs-basic-structure.svg)
 
 ## Express と Fastify の比較
 
@@ -141,7 +141,7 @@ $ npm run format
 
 Express はエコシステムが充実し安定性が高く一般的な Web アプリに適しており、Fastify は高パフォーマンスと TypeScript サポートが強みで、高速性が求められるアプリに最適です。
 
-![ExpressとFastifyの比較](/overview/svg/express-fastify-comparison.svg)
+![ExpressとFastifyの比較](/overview/svg/1_first-steps/express-fastify-comparison.svg)
 
 ### Express
 
@@ -188,7 +188,7 @@ Express はエコシステムが充実し安定性が高く一般的な Web ア�
 
 これらの歴史的背景が、両フレームワークの設計思想や特徴の違いとなって現れています。
 
-![歴史的背景](/overview/svg/framework-history-timeline-final.svg)
+![歴史的背景](/overview/svg/1_first-steps/framework-history-timeline-final.svg)
 
 # この章のサンプル
 

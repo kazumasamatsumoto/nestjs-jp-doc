@@ -4,11 +4,11 @@ NestJS のコントローラーについての解説文書です。コントロ�
 
 ## コントローラーの責務
 
-![NestJSコントローラーの役割と解決方法](/overview/svg/controller-role-and-solutions.svg)
+![NestJSコントローラーの役割と解決方法](/overview/svg/2_controllers/controller-role-and-solutions.svg)
 
 ## 全体像
 
-![全体像](/overview/svg/controller-concept-map-improved.svg)
+![全体像](/overview/svg/2_controllers/controller-concept-map-improved.svg)
 
 # コントローラー
 
@@ -38,7 +38,7 @@ export class CatsController {
 }
 ```
 
-![まずはここの基礎を図式化します](/overview/svg/controller-routing-flow.svg)
+![まずはここの基礎を図式化します](/overview/svg/2_controllers/controller-routing-flow.svg)
 
 > ヒント
 > CLI を使用してコントローラーを作成するには、`$ nest g controller [name]`コマンドを実行するだけです。
@@ -71,7 +71,7 @@ export class CatsController {
 
 このメソッドは 200 のステータスコードと、この場合は単なる文字列であるレスポンスを返します。なぜこれが起こるのでしょうか？説明するために、まず Nest がレスポンスを操作するために採用している 2 つの異なるオプションを紹介します：
 
-![2つの異なるオプション](/overview/svg/controller-response-approaches.svg)
+![2つの異なるオプション](/overview/svg/2_controllers/controller-response-approaches.svg)
 
 ### 標準（推奨）
 
@@ -109,7 +109,7 @@ handler(@Res({ passthrough: true }) res) {
 }
 ```
 
-![二つの方法を検討](/overview/svg/response-handling-flow.svg)
+![二つの方法を検討](/overview/svg/2_controllers/response-handling-flow.svg)
 
 ## リクエストオブジェクト
 
@@ -147,7 +147,7 @@ export class CatsController {
 
 * 基盤となる HTTP プラットフォーム（Express や Fastify など）間での型の互換性のため、Nest は`@Res()`と`@Response()`デコレータを提供しています。`@Res()`は単に`@Response()`のエイリアスです。両者とも、基盤となるネイティブプラットフォームのレスポンスオブジェクトインターフェースを直接公開します。
 
-![NestJSデコレータ一覧](/overview/svg/controller-decorators-table.svg)
+![NestJSデコレータ一覧](/overview/svg/2_controllers/controller-decorators-table.svg)
 
 ## リソース
 
@@ -173,7 +173,7 @@ export class CatsController {
 
 これだけです。Nest は標準的な HTTP メソッド全てにデコレータを提供しています：`@Get()`、`@Post()`、`@Put()`、`@Delete()`、`@Patch()`、`@Options()`、`@Head()`です。さらに、`@All()`はこれら全てを処理するエンドポイントを定義します。
 
-![NestJS HTTPメソッドデコレータ一覧](/overview/svg/http-method-decorators-table.svg)
+![NestJS HTTPメソッドデコレータ一覧](/overview/svg/2_controllers/http-method-decorators-table.svg)
 
 ## ワイルドカードルート
 
@@ -209,7 +209,7 @@ create() {
 
 多くの場合、ステータスコードは静的ではなく、様々な要因に依存します。その場合、ライブラリ固有のレスポンスオブジェクト（`@Res()`を使用して注入）を使用するか、エラーの場合は例外をスローすることができます。
 
-![ステータスコードの例](/overview/svg/http-status-codes-table.svg)
+![ステータスコードの例](/overview/svg/2_controllers/http-status-codes-table.svg)
 
 ## ヘッダー
 
@@ -288,7 +288,7 @@ NestJS では`@Header()`デコレータを使用することで、これらの�
 
 ### リダイレクトの主なユースケース
 
-![リダイレクトの主なユースケース](/overview/svg/controller-redirect-usecase.svg)
+![リダイレクトの主なユースケース](/overview/svg/2_controllers/controller-redirect-usecase.svg)
 
 1. **認証・認可後のリダイレクト**
 
@@ -469,7 +469,7 @@ export class AdminController {}
 
 NestJS のインスタンス共有モデルは、他の言語からの開発者にとって意外かもしれません。
 
-![NestJSインスタンス共有モデル](/overview/svg/controller-scope-concept.svg)
+![NestJSインスタンス共有モデル](/overview/svg/2_controllers/controller-scope-concept.svg)
 
 ### シングルトンスコープ
 
@@ -503,7 +503,7 @@ export class UserContextService {
 }
 ```
 
-![スコープのインスタンスのライフサイクル](/overview/svg/controller-scope-lifecycle.svg)
+![スコープのインスタンスのライフサイクル](/overview/svg/2_controllers/controller-scope-lifecycle.svg)
 
 このように：
 
@@ -537,46 +537,6 @@ Node.js は他の言語（Java, PHP など）とは異なり、リクエスト�
 ## 非同期性
 
 私たちは現代の JavaScript を愛しており、データの抽出のほとんどが非同期であることを知っています。そのため、Nest は非同期関数をサポートし、うまく連携します。
-
-### Node.js における非同期の基本的概念
-
-![非同期処理の基本概念](/overview/svg/async-processing-concept.svg)
-
-> ヒント
-> async/await 機能についての詳細は[こちら]で学べます。
-
-すべての非同期関数は Promise を返す必要があります。これは、Nest が自身で解決できる遅延値を返すことができることを意味します。例を見てみましょう：
-
-```typescript
-// 例1: データベースからのユーザー取得
-@Get('users')
-async findAllUsers(): Promise<User[]> {
-  // この処理は時間がかかる可能性がありますが、
-  // 他のリクエストをブロックしません
-  return await this.userService.findAll();
-}
-
-// 例2: 同時に複数の非同期処理を実行
-@Get('dashboard')
-async getDashboardData(): Promise<DashboardData> {
-  const [users, posts, comments] = await Promise.all([
-    this.userService.findAll(),
-    this.postService.findAll(),
-    this.commentService.findAll()
-  ]);
-  return { users, posts, comments };
-}
-```
-
-### Node.js の非同期処理の実行フロー
-
-![非同期処理の実行フロー](/overview/svg/async-execution-flow.svg)
-
-### イベントループにおけるハードウェアとの関連性
-
-![Node.jsの非同期のしくみ](/overview/svg/async-eventloop-detail.svg)
-
-上記のコードは完全に有効です。さらに、Nest のルートハンドラーはより強力で、RxJS の Observable ストリームを返すこともできます。Nest は自動的にソースをサブスクライブし、（ストリームが完了したら）最後に発行された値を取得します。
 
 ## リクエストペイロード
 
@@ -780,3 +740,13 @@ findAll(@Res({ passthrough: true }) res: Response) {
 ```
 
 これで、ネイティブのレスポンスオブジェクトと対話できる（例：特定の条件に応じてクッキーやヘッダーを設定する）一方で、残りの処理はフレームワークに任せることができます。
+
+## イベントループとリソース管理
+
+イベントループは主に CPU とメモリリソースを管理します：
+
+- **CPU**: タスクの実行とスケジューリング
+- **メモリ**: データの一時保存と管理
+
+> 注: その他のハードウェアリソース（ディスク I/O、ネットワークなど）へのアクセスは、
+> 専用のサブシステムを通じて非同期に処理されます。
